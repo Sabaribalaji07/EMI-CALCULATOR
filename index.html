@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="EMI Pro – Smart Loan Planning Made Simple. Calculate monthly loan payments, compare loan scenarios, and view full amortization schedules. Calculate Smart. Plan Better. Borrow Wisely." />
+    <title>EMI Pro | EMI Calculator</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin="anonymous" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <a href="#calculator" class="skip-link">Skip to Calculator</a>
+
+    <header class="site-header" id="top" role="banner">
+      <div class="header-inner">
+        <a href="#top" class="logo" aria-label="EMI Pro Home">
+          <span class="logo-icon" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+          </span>
+          <span class="logo-text">EMI <span class="logo-pro">Pro</span></span>
+        </a>
+        <nav class="nav-links" role="navigation" aria-label="Main navigation">
+          <a href="#calculator" class="nav-link">Calculator</a>
+          <a href="#compare" class="nav-link">Compare Loans</a>
+          <a href="#schedule" class="nav-link">Repayment Schedule</a>
+        </nav>
+        <div class="header-controls">
+          <button id="themeToggle" class="theme-toggle" aria-label="Switch to dark mode" title="Toggle theme">
+            <svg class="theme-icon-light" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+            <svg class="theme-icon-dark" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+          </button>
+          <button id="navToggle" class="nav-toggle" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobileNav">
+            <span class="hamburger-bar"></span>
+            <span class="hamburger-bar"></span>
+            <span class="hamburger-bar"></span>
+          </button>
+        </div>
+      </div>
+      <nav id="mobileNav" class="mobile-nav" aria-label="Mobile navigation" hidden>
+        <a href="#calculator" class="mobile-nav-link">Calculator</a>
+        <a href="#compare" class="mobile-nav-link">Compare Loans</a>
+        <a href="#schedule" class="mobile-nav-link">Repayment Schedule</a>
+      </nav>
+    </header>
+
+    <div class="page-wrapper">
+
+      <section class="hero-section" aria-labelledby="hero-heading">
+        <div class="hero-badge">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"></polyline><polyline points="16 7 22 7 22 13"></polyline></svg>
+          Smart Financial Planning &amp; Loan Estimator
+        </div>
+        <h1 id="hero-heading" class="hero-heading">
+          Plan Your Loan.<br />
+          <span class="hero-heading-accent">Own Your Future.</span>
+        </h1>
+        <p class="hero-subtext">
+          Calculate EMIs, understand repayment costs, and compare loan scenarios with a clear financial breakdown.
+        </p>
+        <div class="hero-actions">
+          <a href="#calculator" class="btn btn-primary btn-lg">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="2" width="16" height="20" rx="2"></rect><line x1="8" y1="6" x2="16" y2="6"></line><line x1="8" y1="10" x2="16" y2="10"></line><line x1="8" y1="14" x2="16" y2="14"></line><line x1="8" y1="18" x2="12" y2="18"></line></svg>
+            Calculate My EMI
+          </a>
+          <a href="#compare" class="btn btn-ghost btn-lg">Compare Loans</a>
+        </div>
+        <div class="hero-stats">
+          <div class="hero-stat"><span class="hero-stat-check">&#10003;</span> Standard EMI Formula</div>
+          <div class="hero-stat-divider"></div>
+          <div class="hero-stat"><span class="hero-stat-check">&#10003;</span> Full Amortization Schedule</div>
+          <div class="hero-stat-divider"></div>
+          <div class="hero-stat"><span class="hero-stat-check">&#10003;</span> Loan Comparison Tool</div>
+        </div>
+      </section>
+
+      <section class="presets-section" aria-labelledby="presets-heading">
+        <div class="presets-header">
+          <h2 id="presets-heading" class="presets-title">Explore Loan Scenarios</h2>
+          <p class="presets-subtitle">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+            Illustrative loan examples &mdash; not actual lender offers. Select any scenario to populate calculator inputs.
+          </p>
+        </div>
+
+        <div class="presets-grid" role="group" aria-label="Loan scenario presets">
+
+          <!-- 1. Home Loan -->
+          <button class="preset-card" id="presetHome" data-loan-type="home" type="button" aria-pressed="false" title="Explore Home Loan scenario">
+            <div class="preset-card-top">
+              <div class="preset-card-icon" aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+              </div>
+              <span class="preset-card-badge" hidden>Selected</span>
+            </div>
+            <div class="preset-card-body">
+              <h3 class="preset-card-title">Home Loan</h3>
+              <p class="preset-card-desc">Purchase, construct, or renovate your dream residential property</p>
+            </div>
+            <div class="preset-card-specs">
+              <div class="preset-spec-item">
+                <span class="spec-label">Amount</span>
+                <span class="spec-value">&#8377;50 Lakh</span>
+              </div>
+              <div class="preset-spec-item">
+                <span class="spec-label">Rate</span>
+                <span class="spec-value">8.50%</span>
+              </div>
+              <div class="preset-spec-item">
+                <span class="spec-label">Tenure</span>
+                <span class="spec-value">20 Yrs</span>
+              </div>
+            </div>
+            <div class="preset-card-footer">
+              <span class="preset-apply-text">Populate scenario</span>
+              <span class="preset-apply-arrow" aria-hidden="true">&rarr;</span>
+            </div>
+          </button>
+
+          <!-- 2. Car Loan -->
+          <button class="preset-card" id="presetCar" data-loan-type="car" type="button" aria-pressed="false" title="Explore Car Loan scenario">
+            <div class="preset-card-top">
+              <div class="preset-card-icon" aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="10" width="20" height="8" rx="2"></rect><path d="M5 10l2.5-5h9l2.5 5"></path><circle cx="7" cy="18" r="2"></circle><circle cx="17" cy="18" r="2"></circle></svg>
+              </div>
+              <span class="preset-card-badge" hidden>Selected</span>
+            </div>
+            <div class="preset-card-body">
+              <h3 class="preset-card-title">Car Loan</h3>
+              <p class="preset-card-desc">Drive home your brand-new or certified pre-owned four-wheeler</p>
+            </div>
+            <div class="preset-card-specs">
+              <div class="preset-spec-item">
+                <span class="spec-label">Amount</span>
+                <span class="spec-value">&#8377;8 Lakh</span>
+              </div>
+              <div class="preset-spec-item">
+                <span class="spec-label">Rate</span>
+                <span class="spec-value">9.00%</span>
+              </div>
+              <div class="preset-spec-item">
+                <span class="spec-label">Tenure</span>
+                <span class="spec-value">5 Yrs</span>
+              </div>
+            </div>
+            <div class="preset-card-footer">
+              <span class="preset-apply-text">Populate scenario</span>
+              <span class="preset-apply-arrow" aria-hidden="true">&rarr;</span>
+            </div>
+          </button>
+
+          <!-- 3. Education Loan -->
+          <button class="preset-card" id="presetEducation" data-loan-type="education" type="button" aria-pressed="false" title="Explore Education Loan scenario">
+            <div class="preset-card-top">
+              <div class="preset-card-icon" aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"></path><path d="M6 12v5c3 3 9 3 12 0v-5"></path></svg>
+              </div>
+              <span class="preset-card-badge" hidden>Selected</span>
+            </div>
+            <div class="preset-card-body">
+              <h3 class="preset-card-title">Education Loan</h3>
+              <p class="preset-card-desc">Fund university degrees, higher studies, and semester tuition</p>
+            </div>
+            <div class="preset-card-specs">
+              <div class="preset-spec-item">
+                <span class="spec-label">Amount</span>
+                <span class="spec-value">&#8377;15 Lakh</span>
+              </div>
+              <div class="preset-spec-item">
+                <span class="spec-label">Rate</span>
+                <span class="spec-value">9.50%</span>
+              </div>
+              <div class="preset-spec-item">
+                <span class="spec-label">Tenure</span>
+                <span class="spec-value">7 Yrs</span>
+              </div>
+            </div>
+            <div class="preset-card-footer">
+              <span class="preset-apply-text">Populate scenario</span>
+              <span class="preset-apply-arrow" aria-hidden="true">&rarr;</span>
+            </div>
+          </button>
+
+          <!-- 4. Personal Loan -->
+          <button class="preset-card" id="presetPersonal" data-loan-type="personal" type="button" aria-pressed="false" title="Explore Personal Loan scenario">
+            <div class="preset-card-top">
+              <div class="preset-card-icon" aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+              </div>
+              <span class="preset-card-badge" hidden>Selected</span>
+            </div>
+            <div class="preset-card-body">
+              <h3 class="preset-card-title">Personal Loan</h3>
+              <p class="preset-card-desc">Flexible personal credit for emergency, wedding, or travel needs</p>
+            </div>
+            <div class="preset-card-specs">
+              <div class="preset-spec-item">
+                <span class="spec-label">Amount</span>
+                <span class="spec-value">&#8377;3 Lakh</span>
+              </div>
+              <div class="preset-spec-item">
+                <span class="spec-label">Rate</span>
+                <span class="spec-value">13.50%</span>
+              </div>
+              <div class="preset-spec-item">
+                <span class="spec-label">Tenure</span>
+                <span class="spec-value">3 Yrs</span>
+              </div>
+            </div>
+            <div class="preset-card-footer">
+              <span class="preset-apply-text">Populate scenario</span>
+              <span class="preset-apply-arrow" aria-hidden="true">&rarr;</span>
+            </div>
+          </button>
+        </div>
+
+        <!-- Accessible scenario load confirmation banner -->
+        <div id="presetFeedback" class="preset-feedback" role="status" aria-live="polite" hidden>
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          <span id="presetFeedbackText">Scenario loaded into calculator.</span>
+        </div>
+      </section>
+
+      <section id="calculator" class="calculator-section" aria-labelledby="calc-section-heading">
+        <div class="section-header">
+          <h2 id="calc-section-heading" class="section-title">EMI Calculator</h2>
+          <p class="section-subtitle">Enter your loan details to calculate the monthly instalment.</p>
+        </div>
+
+        <div class="calc-layout">
+
+          <div class="card form-card">
+            <h3 class="card-heading">Loan Details</h3>
+            <form id="emiForm" novalidate autocomplete="off">
+
+              <div class="field-group" id="field-loan-type">
+                <label class="field-label" id="loanTypeGroupLabel">
+                  Select Loan Type
+                  <button type="button" class="field-tooltip" aria-label="Loan type tooltip: Choose a loan category to populate default suggested values." title="Choose a loan category to populate default suggested values.">?</button>
+                </label>
+
+                <!-- 12 Loan Selection Cards -->
+                <div class="loan-type-grid" role="radiogroup" aria-labelledby="loanTypeGroupLabel">                  <!-- 1. Home Loan -->
+                  <button type="button" class="loan-type-card" data-loan-value="home" role="radio" aria-checked="false" title="Select Home Loan">
+                    <div class="loan-type-card-header">
+                      <div class="loan-type-card-icon" aria-hidden="true">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+                      </div>
+                      <span class="loan-type-radio-check" aria-hidden="true"></span>
+                    </div>
+                    <div class="loan-type-card-content">
+                      <span class="loan-type-card-name">Home Loan</span>
+                      <span class="loan-type-card-meta">Manual Entry &middot; Years</span>
+                    </div>
+                  </button>
+
+                  <!-- 2. Personal Loan -->
+                  <button type="button" class="loan-type-card" data-loan-value="personal" role="radio" aria-checked="false" title="Select Personal Loan">
+                    <div class="loan-type-card-header">
+                      <div class="loan-type-card-icon" aria-hidden="true">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                      </div>
+                      <span class="loan-type-radio-check" aria-hidden="true"></span>
+                    </div>
+                    <div class="loan-type-card-content">
+                      <span class="loan-type-card-name">Personal Loan</span>
+                      <span class="loan-type-card-meta">Manual Entry &middot; Years</span>
+                    </div>
+                  </button>
+
+                  <!-- 3. Car Loan -->
+                  <button type="button" class="loan-type-card" data-loan-value="car" role="radio" aria-checked="false" title="Select Car Loan">
+                    <div class="loan-type-card-header">
+                      <div class="loan-type-card-icon" aria-hidden="true">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="10" width="20" height="8" rx="2"></rect><path d="M5 10l2.5-5h9l2.5 5"></path><circle cx="7" cy="18" r="2"></circle><circle cx="17" cy="18" r="2"></circle></svg>
+                      </div>
+                      <span class="loan-type-radio-check" aria-hidden="true"></span>
+                    </div>
+                    <div class="loan-type-card-content">
+                      <span class="loan-type-card-name">Car Loan</span>
+                      <span class="loan-type-card-meta">Manual Entry &middot; Years</span>
+                    </div>
+                  </button>
+
+                  <!-- 4. Two-Wheeler Loan -->
+                  <button type="button" class="loan-type-card" data-loan-value="two-wheeler" role="radio" aria-checked="false" title="Select Two-Wheeler Loan">
+                    <div class="loan-type-card-header">
+                      <div class="loan-type-card-icon" aria-hidden="true">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18.5" cy="17.5" r="3.5"></circle><circle cx="5.5" cy="17.5" r="3.5"></circle><circle cx="15" cy="5" r="1"></circle><path d="M12 17.5V14l-3-3 4-3 2 3h2"></path></svg>
+                      </div>
+                      <span class="loan-type-radio-check" aria-hidden="true"></span>
+                    </div>
+                    <div class="loan-type-card-content">
+                      <span class="loan-type-card-name">Two-Wheeler Loan</span>
+                      <span class="loan-type-card-meta">Manual Entry &middot; Years</span>
+                    </div>
+                  </button>
+
+                  <!-- 5. Education Loan -->
+                  <button type="button" class="loan-type-card" data-loan-value="education" role="radio" aria-checked="false" title="Select Education Loan">
+                    <div class="loan-type-card-header">
+                      <div class="loan-type-card-icon" aria-hidden="true">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"></path><path d="M6 12v5c3 3 9 3 12 0v-5"></path></svg>
+                      </div>
+                      <span class="loan-type-radio-check" aria-hidden="true"></span>
+                    </div>
+                    <div class="loan-type-card-content">
+                      <span class="loan-type-card-name">Education Loan</span>
+                      <span class="loan-type-card-meta">Manual Entry &middot; Years</span>
+                    </div>
+                  </button>
+
+                  <!-- 6. Business Loan -->
+                  <button type="button" class="loan-type-card" data-loan-value="business" role="radio" aria-checked="false" title="Select Business Loan">
+                    <div class="loan-type-card-header">
+                      <div class="loan-type-card-icon" aria-hidden="true">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
+                      </div>
+                      <span class="loan-type-radio-check" aria-hidden="true"></span>
+                    </div>
+                    <div class="loan-type-card-content">
+                      <span class="loan-type-card-name">Business Loan</span>
+                      <span class="loan-type-card-meta">Manual Entry &middot; Years</span>
+                    </div>
+                  </button>
+
+                  <!-- 7. Gold Loan -->
+                  <button type="button" class="loan-type-card" data-loan-value="gold" role="radio" aria-checked="false" title="Select Gold Loan">
+                    <div class="loan-type-card-header">
+                      <div class="loan-type-card-icon" aria-hidden="true">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"></circle><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"></path></svg>
+                      </div>
+                      <span class="loan-type-radio-check" aria-hidden="true"></span>
+                    </div>
+                    <div class="loan-type-card-content">
+                      <span class="loan-type-card-name">Gold Loan</span>
+                      <span class="loan-type-card-meta">Manual Entry &middot; Years</span>
+                    </div>
+                  </button>
+
+                  <!-- 8. Loan Against Property -->
+                  <button type="button" class="loan-type-card" data-loan-value="property" role="radio" aria-checked="false" title="Select Loan Against Property">
+                    <div class="loan-type-card-header">
+                      <div class="loan-type-card-icon" aria-hidden="true">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2"></rect><path d="M9 22v-4h6v4"></path><circle cx="8" cy="6" r="0.5"></circle><circle cx="16" cy="6" r="0.5"></circle><circle cx="8" cy="10" r="0.5"></circle><circle cx="16" cy="10" r="0.5"></circle><circle cx="8" cy="14" r="0.5"></circle><circle cx="16" cy="14" r="0.5"></circle></svg>
+                      </div>
+                      <span class="loan-type-radio-check" aria-hidden="true"></span>
+                    </div>
+                    <div class="loan-type-card-content">
+                      <span class="loan-type-card-name">Loan Against Property</span>
+                      <span class="loan-type-card-meta">Manual Entry &middot; Years</span>
+                    </div>
+                  </button>
+
+                  <!-- 9. Loan Against Credit Card -->
+                  <button type="button" class="loan-type-card" data-loan-value="credit-card" role="radio" aria-checked="false" title="Select Loan Against Credit Card">
+                    <div class="loan-type-card-header">
+                      <div class="loan-type-card-icon" aria-hidden="true">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect><line x1="1" y1="10" x2="23" y2="10"></line></svg>
+                      </div>
+                      <span class="loan-type-radio-check" aria-hidden="true"></span>
+                    </div>
+                    <div class="loan-type-card-content">
+                      <span class="loan-type-card-name">Loan Against Credit Card</span>
+                      <span class="loan-type-card-meta">Manual Entry &middot; Years</span>
+                    </div>
+                  </button>
+
+                  <!-- 10. Agriculture Loan -->
+                  <button type="button" class="loan-type-card" data-loan-value="agriculture" role="radio" aria-checked="false" title="Select Agriculture Loan">
+                    <div class="loan-type-card-header">
+                      <div class="loan-type-card-icon" aria-hidden="true">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 10a6 6 0 0 0-6-6H3v3a6 6 0 0 0 6 6h3"></path><path d="M12 14a6 6 0 0 1 6-6h3v3a6 6 0 0 1-6 6h-3"></path><line x1="12" y1="10" x2="12" y2="22"></line></svg>
+                      </div>
+                      <span class="loan-type-radio-check" aria-hidden="true"></span>
+                    </div>
+                    <div class="loan-type-card-content">
+                      <span class="loan-type-card-name">Agriculture Loan</span>
+                      <span class="loan-type-card-meta">Manual Entry &middot; Years</span>
+                    </div>
+                  </button>
+
+                  <!-- 11. Medical Loan -->
+                  <button type="button" class="loan-type-card" data-loan-value="medical" role="radio" aria-checked="false" title="Select Medical Loan">
+                    <div class="loan-type-card-header">
+                      <div class="loan-type-card-icon" aria-hidden="true">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"></path></svg>
+                      </div>
+                      <span class="loan-type-radio-check" aria-hidden="true"></span>
+                    </div>
+                    <div class="loan-type-card-content">
+                      <span class="loan-type-card-name">Medical Loan</span>
+                      <span class="loan-type-card-meta">Manual Entry &middot; Years</span>
+                    </div>
+                  </button>
+
+                  <!-- 12. Consumer Durable Loan -->
+                  <button type="button" class="loan-type-card" data-loan-value="consumer-durable" role="radio" aria-checked="false" title="Select Consumer Durable Loan">
+                    <div class="loan-type-card-header">
+                      <div class="loan-type-card-icon" aria-hidden="true">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="15" rx="2" ry="2"></rect><polyline points="17 2 12 7 7 2"></polyline></svg>
+                      </div>
+                      <span class="loan-type-radio-check" aria-hidden="true"></span>
+                    </div>
+                    <div class="loan-type-card-content">
+                      <span class="loan-type-card-name">Consumer Durable Loan</span>
+                      <span class="loan-type-card-meta">Manual Entry &middot; Years</span>
+                    </div>
+                  </button>
+
+                </div>
+
+                <!-- Fully synchronized select input with all 12 loan types for form compatibility -->
+                <select id="loanType" name="loanType" class="visually-hidden" aria-hidden="true" tabindex="-1">
+                  <option value="" disabled selected>-- Select Loan Type --</option>
+                  <option value="home">Home Loan</option>
+                  <option value="personal">Personal Loan</option>
+                  <option value="car">Car Loan</option>
+                  <option value="two-wheeler">Two-Wheeler Loan</option>
+                  <option value="education">Education Loan</option>
+                  <option value="business">Business Loan</option>
+                  <option value="gold">Gold Loan</option>
+                  <option value="property">Loan Against Property</option>
+                  <option value="credit-card">Loan Against Credit Card</option>
+                  <option value="agriculture">Agriculture Loan</option>
+                  <option value="medical">Medical Loan</option>
+                  <option value="consumer-durable">Consumer Durable Loan</option>
+                </select>
+              </div>
+
+              <!-- Initial Prompt: shown before any loan type is selected -->
+              <div id="noLoanSelectedPrompt" class="loan-selection-prompt">
+                <div class="prompt-icon" aria-hidden="true">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+                </div>
+                <div class="prompt-text">
+                  <strong>Select any loan type above</strong> to open the form and manually enter your loan amount, interest rate, and tenure (in years).
+                </div>
+              </div>
+
+              <!-- Manual Entry Form Container: opens when ANY loan type is selected -->
+              <div id="loanInputsContainer" class="loan-inputs-container" hidden>
+
+                <div class="selected-loan-banner" id="selectedLoanBanner">
+                  <div class="selected-loan-info">
+                    <span class="selected-loan-tag">Selected Category</span>
+                    <h4 class="selected-loan-title" id="selectedLoanTitle">Home Loan</h4>
+                  </div>
+                  <span class="manual-entry-badge">Manual Entry</span>
+                </div>
+
+                <!-- 1. Loan Amount -->
+                <div class="field-group" id="field-principal">
+                  <label class="field-label" for="principal">
+                    1. Loan Amount (&#8377;)
+                    <button type="button" class="field-tooltip" aria-label="Loan amount tooltip: Enter the amount manually." title="Enter the amount manually.">?</button>
+                  </label>
+                  <div class="input-wrapper" id="wrapper-principal">
+                    <span class="input-prefix" aria-hidden="true">&#8377;</span>
+                    <input type="number" id="principal" name="principal" class="field-input"
+                      placeholder="Enter amount manually (e.g. 2500000)" min="1" step="any" inputmode="decimal"
+                      aria-required="true" aria-describedby="principal-error" />
+                  </div>
+                  <input type="range" id="principalSlider" class="range-slider"
+                    min="10000" max="10000000" step="10000" value="500000"
+                    aria-label="Loan amount slider" />
+                  <div class="slider-labels" aria-hidden="true">
+                    <span>&#8377;10K</span><span>&#8377;1 Cr</span>
+                  </div>
+                  <p class="error-msg" id="principal-error" role="alert" aria-live="polite"></p>
+                </div>
+
+                <!-- 2. Interest Rate -->
+                <div class="field-group" id="field-rate">
+                  <label class="field-label" for="rate">
+                    2. Interest Rate (%)
+                    <button type="button" class="field-tooltip" aria-label="Interest rate tooltip: Enter the annual interest rate manually." title="Enter the annual interest rate manually.">?</button>
+                  </label>
+                  <div class="input-wrapper" id="wrapper-rate">
+                    <input type="number" id="rate" name="rate" class="field-input"
+                      placeholder="Enter interest rate manually (e.g. 8.5)" min="0" step="any" inputmode="decimal"
+                      aria-required="true" aria-describedby="rate-error" />
+                    <span class="input-suffix" aria-hidden="true">%</span>
+                  </div>
+                  <input type="range" id="rateSlider" class="range-slider"
+                    min="0" max="30" step="0.1" value="8.5"
+                    aria-label="Interest rate slider" />
+                  <div class="slider-labels" aria-hidden="true">
+                    <span>0%</span><span>30%</span>
+                  </div>
+                  <p class="error-msg" id="rate-error" role="alert" aria-live="polite"></p>
+                </div>
+
+                <!-- 3. Loan Tenure (Years) -->
+                <div class="field-group" id="field-tenure">
+                  <label class="field-label" for="tenure">
+                    3. Loan Tenure (Years)
+                    <button type="button" class="field-tooltip" aria-label="Tenure tooltip: Enter the number of years manually." title="Enter the number of years manually.">?</button>
+                  </label>
+                  <div class="tenure-row">
+                    <div class="input-wrapper tenure-input-wrapper" id="wrapper-tenure">
+                      <input type="number" id="tenure" name="tenure" class="field-input"
+                        placeholder="Enter tenure in years (e.g. 5)" min="1" step="1" inputmode="numeric"
+                        aria-required="true" aria-describedby="tenure-error" />
+                    </div>
+                    <select id="tenureUnit" name="tenureUnit" class="tenure-select" aria-label="Tenure unit">
+                      <option value="years" selected>Years</option>
+                      <option value="months">Months</option>
+                    </select>
+                  </div>
+                  <input type="range" id="tenureSlider" class="range-slider"
+                    min="1" max="30" step="1" value="5"
+                    aria-label="Loan tenure slider" />
+                  <div class="slider-labels" id="tenureSliderLabels" aria-hidden="true">
+                    <span id="tenureSliderMin">1 Yr</span><span id="tenureSliderMax">30 Yrs</span>
+                  </div>
+                  <p class="error-msg" id="tenure-error" role="alert" aria-live="polite"></p>
+                </div>
+
+                <div class="btn-row">
+                  <button type="submit" id="calculateBtn" class="btn btn-primary">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"></polyline><polyline points="16 7 22 7 22 13"></polyline></svg>
+                    Calculate EMI
+                  </button>
+                  <button type="button" id="resetBtn" class="btn btn-secondary">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="1 4 1 10 7 10"></polyline><path d="M3.51 15a9 9 0 1 0 .49-3.51"></path></svg>
+                    Reset
+                  </button>
+                </div>
+
+              </div>
+
+            </form>
+          </div>
+
+          <div class="card result-card">
+            <h3 class="card-heading">Repayment Summary</h3>
+
+            <div class="placeholder-msg" id="placeholderMsg">
+              <div class="placeholder-icon" aria-hidden="true">
+                <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2"></rect><line x1="8" y1="6" x2="16" y2="6"></line><line x1="8" y1="10" x2="16" y2="10"></line><line x1="8" y1="14" x2="16" y2="14"></line><line x1="8" y1="18" x2="12" y2="18"></line></svg>
+              </div>
+              <p>Enter your loan details and click <strong>Calculate EMI</strong> to view your repayment summary and chart.</p>
+            </div>
+
+            <div class="outdated-banner" id="outdatedBanner" hidden role="status" aria-live="polite">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+              <span>Loan details modified. Click <strong>Calculate EMI</strong> to update results.</span>
+            </div>
+
+            <div class="results-container" id="resultsContainer" hidden>
+
+              <div class="emi-hero">
+                <p class="emi-hero-label">Monthly EMI</p>
+                <p class="emi-hero-value" id="result-emi">&#8377;0.00</p>
+              </div>
+
+              <div class="chart-container" id="chartContainer" aria-label="Loan breakdown pie chart">
+                <svg id="donutChart" class="donut-chart" viewBox="0 0 200 200" role="img" aria-labelledby="chartTitle chartDesc">
+                  <title id="chartTitle">Loan Breakdown</title>
+                  <desc id="chartDesc">Doughnut chart showing principal amount versus total interest payable.</desc>
+                  <circle cx="100" cy="100" r="80" fill="none" stroke="var(--chart-track)" stroke-width="28" />
+                  <circle id="chartPrincipalArc" cx="100" cy="100" r="80" fill="none"
+                    stroke="var(--color-blue-mid)" stroke-width="28"
+                    stroke-dasharray="0 503" stroke-dashoffset="0"
+                    transform="rotate(-90 100 100)" />
+                  <circle id="chartInterestArc" cx="100" cy="100" r="80" fill="none"
+                    stroke="var(--color-interest)" stroke-width="28"
+                    stroke-dasharray="0 503" stroke-dashoffset="0"
+                    transform="rotate(-90 100 100)" />
+                  <text id="chartCentreLabel" x="100" y="95" text-anchor="middle"
+                    font-size="9.5" font-weight="600" fill="var(--color-text-muted)" font-family="Inter,sans-serif">TOTAL</text>
+                  <text id="chartCentreValue" x="100" y="114" text-anchor="middle"
+                    font-size="11" font-weight="800" fill="var(--color-text-dark)" font-family="Inter,sans-serif">—</text>
+                </svg>
+                <div class="chart-legend" aria-label="Chart legend">
+                  <div class="legend-item">
+                    <span class="legend-dot legend-dot--principal" aria-hidden="true"></span>
+                    <span class="legend-label">Principal</span>
+                    <span class="legend-value" id="legendPrincipal">—</span>
+                  </div>
+                  <div class="legend-item">
+                    <span class="legend-dot legend-dot--interest" aria-hidden="true"></span>
+                    <span class="legend-label">Interest</span>
+                    <span class="legend-value" id="legendInterest">—</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="result-grid" role="list" aria-label="Loan repayment details">
+                <div class="result-item" role="listitem">
+                  <span class="result-item-label">Loan Type</span>
+                  <span class="result-item-value" id="result-loan-type">Custom Loan</span>
+                </div>
+                <div class="result-item" role="listitem">
+                  <span class="result-item-label">Principal Amount</span>
+                  <span class="result-item-value" id="result-principal">&#8377;0.00</span>
+                </div>
+                <div class="result-item" role="listitem">
+                  <span class="result-item-label">Total Interest Payable</span>
+                  <span class="result-item-value interest" id="result-interest">&#8377;0.00</span>
+                </div>
+                <div class="result-item result-item--highlight" role="listitem">
+                  <span class="result-item-label">Total Repayment Amount</span>
+                  <span class="result-item-value total" id="result-total">&#8377;0.00</span>
+                </div>
+                <div class="result-item" role="listitem">
+                  <span class="result-item-label">Annual Interest Rate</span>
+                  <span class="result-item-value" id="result-rate">0%</span>
+                </div>
+                <div class="result-item" role="listitem">
+                  <span class="result-item-label">Loan Tenure</span>
+                  <span class="result-item-value" id="result-tenure-months">0 months</span>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <section id="compare" class="section-container" aria-labelledby="compare-heading">
+        <div class="section-header">
+          <h2 id="compare-heading" class="section-title">Compare Loans</h2>
+          <p class="section-subtitle">Enter two loan scenarios to see a side-by-side comparison. Results depend entirely on the values you enter.</p>
+        </div>
+
+        <div class="compare-layout">
+          <div class="card compare-card" aria-labelledby="scenario-a-heading">
+            <h3 id="scenario-a-heading" class="card-heading compare-card-heading--a">
+              <span class="scenario-badge scenario-badge--a" aria-hidden="true">A</span> Scenario A
+            </h3>
+            <div class="field-group">
+              <label class="field-label" for="compPrincipalA">Loan Amount (&#8377;)</label>
+              <div class="input-wrapper" id="wrapper-compPrincipalA">
+                <span class="input-prefix" aria-hidden="true">&#8377;</span>
+                <input type="number" id="compPrincipalA" class="field-input" placeholder="500000" min="1" step="any" inputmode="decimal" aria-describedby="compA-error" />
+              </div>
+            </div>
+            <div class="field-group">
+              <label class="field-label" for="compRateA">Annual Interest Rate (%)</label>
+              <div class="input-wrapper" id="wrapper-compRateA">
+                <input type="number" id="compRateA" class="field-input" placeholder="8.5" min="0" step="any" inputmode="decimal" />
+                <span class="input-suffix" aria-hidden="true">%</span>
+              </div>
+            </div>
+            <div class="field-group">
+              <label class="field-label" for="compTenureA">Tenure</label>
+              <div class="tenure-row">
+                <div class="input-wrapper tenure-input-wrapper" id="wrapper-compTenureA">
+                  <input type="number" id="compTenureA" class="field-input" placeholder="5" min="1" step="1" inputmode="numeric" />
+                </div>
+                <select id="compUnitA" class="tenure-select" aria-label="Scenario A tenure unit">
+                  <option value="years" selected>Years</option>
+                  <option value="months">Months</option>
+                </select>
+              </div>
+            </div>
+            <p class="error-msg" id="compA-error" role="alert" aria-live="polite"></p>
+          </div>
+
+          <div class="compare-vs" aria-hidden="true">VS</div>
+
+          <div class="card compare-card" aria-labelledby="scenario-b-heading">
+            <h3 id="scenario-b-heading" class="card-heading compare-card-heading--b">
+              <span class="scenario-badge scenario-badge--b" aria-hidden="true">B</span> Scenario B
+            </h3>
+            <div class="field-group">
+              <label class="field-label" for="compPrincipalB">Loan Amount (&#8377;)</label>
+              <div class="input-wrapper" id="wrapper-compPrincipalB">
+                <span class="input-prefix" aria-hidden="true">&#8377;</span>
+                <input type="number" id="compPrincipalB" class="field-input" placeholder="500000" min="1" step="any" inputmode="decimal" aria-describedby="compB-error" />
+              </div>
+            </div>
+            <div class="field-group">
+              <label class="field-label" for="compRateB">Annual Interest Rate (%)</label>
+              <div class="input-wrapper" id="wrapper-compRateB">
+                <input type="number" id="compRateB" class="field-input" placeholder="10.5" min="0" step="any" inputmode="decimal" />
+                <span class="input-suffix" aria-hidden="true">%</span>
+              </div>
+            </div>
+            <div class="field-group">
+              <label class="field-label" for="compTenureB">Tenure</label>
+              <div class="tenure-row">
+                <div class="input-wrapper tenure-input-wrapper" id="wrapper-compTenureB">
+                  <input type="number" id="compTenureB" class="field-input" placeholder="5" min="1" step="1" inputmode="numeric" />
+                </div>
+                <select id="compUnitB" class="tenure-select" aria-label="Scenario B tenure unit">
+                  <option value="years" selected>Years</option>
+                  <option value="months">Months</option>
+                </select>
+              </div>
+            </div>
+            <p class="error-msg" id="compB-error" role="alert" aria-live="polite"></p>
+          </div>
+        </div>
+
+        <div class="compare-btn-row">
+          <button type="button" id="compareBtn" class="btn btn-primary">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
+            Compare Scenarios
+          </button>
+          <button type="button" id="resetCompareBtn" class="btn btn-secondary">Reset Comparison</button>
+        </div>
+
+        <div id="compareResults" class="compare-results" hidden>
+          <div class="compare-results-grid">
+            <div class="compare-result-col compare-result-col--a" aria-labelledby="comp-result-a-heading">
+              <h4 id="comp-result-a-heading" class="comp-result-heading">
+                <span class="scenario-badge scenario-badge--a">A</span> Scenario A
+              </h4>
+              <div class="comp-stat-list">
+                <div class="comp-stat"><span class="comp-stat-label">Monthly EMI</span><span class="comp-stat-value" id="compResultEmiA">—</span></div>
+                <div class="comp-stat"><span class="comp-stat-label">Total Interest</span><span class="comp-stat-value comp-interest" id="compResultInterestA">—</span></div>
+                <div class="comp-stat"><span class="comp-stat-label">Total Repayment</span><span class="comp-stat-value comp-total" id="compResultTotalA">—</span></div>
+                <div class="comp-stat"><span class="comp-stat-label">Loan Duration</span><span class="comp-stat-value" id="compResultDurationA">—</span></div>
+              </div>
+            </div>
+            <div class="compare-result-col compare-result-col--b" aria-labelledby="comp-result-b-heading">
+              <h4 id="comp-result-b-heading" class="comp-result-heading">
+                <span class="scenario-badge scenario-badge--b">B</span> Scenario B
+              </h4>
+              <div class="comp-stat-list">
+                <div class="comp-stat"><span class="comp-stat-label">Monthly EMI</span><span class="comp-stat-value" id="compResultEmiB">—</span></div>
+                <div class="comp-stat"><span class="comp-stat-label">Total Interest</span><span class="comp-stat-value comp-interest" id="compResultInterestB">—</span></div>
+                <div class="comp-stat"><span class="comp-stat-label">Total Repayment</span><span class="comp-stat-value comp-total" id="compResultTotalB">—</span></div>
+                <div class="comp-stat"><span class="comp-stat-label">Loan Duration</span><span class="comp-stat-value" id="compResultDurationB">—</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="compare-difference" id="compareDifference" aria-live="polite"></div>
+          <p class="compare-disclaimer">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+            The better option depends on your specific financial situation. A lower EMI may mean a longer repayment period and higher total interest.
+          </p>
+        </div>
+      </section>
+
+      <section id="schedule" class="section-container" aria-labelledby="schedule-heading">
+        <div class="section-header">
+          <h2 id="schedule-heading" class="section-title">Repayment Schedule</h2>
+          <p class="section-subtitle">Month-by-month breakdown of principal, interest, and remaining balance.</p>
+        </div>
+
+        <div class="schedule-placeholder" id="schedulePlaceholder">
+          <div class="placeholder-icon" aria-hidden="true">
+            <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+          </div>
+          <p>Calculate your EMI above to generate the repayment schedule.</p>
+        </div>
+
+        <div id="scheduleContainer" hidden>
+          <div class="schedule-toolbar">
+            <p class="schedule-info" id="scheduleInfo" aria-live="polite"></p>
+            <button type="button" id="downloadPdfBtn" class="btn btn-secondary btn-sm" title="Download repayment schedule as a professionally formatted PDF">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="12" y1="18" x2="12" y2="12"></line><line x1="9" y1="15" x2="12" y2="18"></line><line x1="15" y1="15" x2="12" y2="18"></line></svg>
+              Download PDF
+            </button>
+          </div>
+          <div class="table-scroll-wrapper" role="region" aria-label="Amortization schedule table" tabindex="0">
+            <table class="amort-table" id="amortTable">
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Opening Balance</th>
+                  <th scope="col">EMI Payment</th>
+                  <th scope="col">Principal Paid</th>
+                  <th scope="col">Interest Paid</th>
+                  <th scope="col">Remaining Balance</th>
+                </tr>
+              </thead>
+              <tbody id="amortTableBody"></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+    </div>
+
+    <footer class="site-footer" role="contentinfo">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <span class="footer-logo-text">EMI <strong>Pro</strong></span>
+          <span class="footer-tagline">EMI Calculator</span>
+        </div>
+        <div class="footer-center">
+          <p><strong>EMI Pro</strong> — Smart Loan Planning Made Simple</p>
+          <p class="footer-sub">Calculate Smart. Plan Better. Borrow Wisely.</p>
+        </div>
+        <div class="footer-note">
+          <p>All calculations run locally in your browser.</p>
+          <p>No data is stored or transmitted.</p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Client-side PDF generation via CDN (seamlessly falls back to native print if offline) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.8.2/jspdf.plugin.autotable.min.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
